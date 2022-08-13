@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "type": "House",
+    "name": "House 1",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
+    "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8aG91c2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    "country": "United States",
+    "address": "7240C Argyle St. Lawndale, CA 90262",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "surface": "4200 sq ft",
+    "year": "2016",
+    "price": "110000",
+    "agent": {
+      "image": "Mr. Jhon",
+      "name": "Mr. Jhon",
+      "phone": "0123 456 789199"
+    }
+  },
+  {
+    "id": 2,
+    "type": "House",
+    "name": "House 2",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
+    "image": "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "country": "Canada",
+    "address": "7240C Canada, CA 90262",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "surface": "4200 sq ft",
+    "year": "2014",
+    "price": "2000",
+    "agent": {
+      "image": "Mr. Jhon",
+      "name": "Mr. Jhon",
+      "phone": "0123 456 789199"
+    }
+  },
+  {
+    "id": 3,
+    "type": "Apartment",
+    "name": "Apartment 1",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
+    "image": "https://images.unsplash.com/photo-1580041065738-e72023775cdc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "country": "Canada",
+    "address": "7240C Canada, CA 90262",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "surface": "5200 sq ft",
+    "year": "2014",
+    "price": "2000",
+    "agent": {
+      "image": "Mr. Smith",
+      "name": "Mr. Jhon",
+      "phone": "0123 456 789199"
+    }
+  },
+  {
+    "id": 4,
+    "type": "Apartment",
+    "name": "Apartment 2",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
+    "image": "https://images.unsplash.com/photo-1502672023488-70e25813eb80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXBhcnRtZW50fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    "country": "Italy",
+    "address": "88a9 italy, CA 90262",
+    "bedrooms": 7,
+    "bathrooms": 4,
+    "surface": "5200 sq ft",
+    "year": "2018",
+    "price": "24000",
+    "agent": {
+      "image": "Mr. Smith",
+      "name": "Mr Roky",
+      "phone": "0123 456 23443299"
+    }
+  },
+  {
+    "id": 5,
+    "type": "Shop",
+    "name": "Shop 1",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, illoat. Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab distinctio unde ipsam molestias atqueratione delectus blanditiis nemo eius dignissimos doloremque quaealiquid maiores id tempore consequatur, quod pariatur saepe.",
+    "image": "https://images.unsplash.com/photo-1580041065738-e72023775cdc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGFwYXJ0bWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "country": "Italy",
+    "address": "33 italy, CA 90262",
+    "bedrooms": 6,
+    "bathrooms": 4,
+    "surface": "5200 sq ft",
+    "year": "2018",
+    "price": "24700",
+    "agent": {
+      "image": "Mr. Smith",
+      "name": "Mr Roky",
+      "phone": "0123 456 23443299"
+    }
+  }
+]
