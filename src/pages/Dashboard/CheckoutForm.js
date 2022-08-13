@@ -1,14 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import useAuth from "./../../hooks/useAuth";
+import Loadingimg from "../Loadingimg";
 
 const CheckoutForm = ({ order }) => {
-  const { price, property, _id } = order;
+  const { property, price, _id } = order;
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
-  const [cardErr, setCardErr] = useState("");
-  const [transactionId, setTransactionId] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
@@ -21,11 +20,11 @@ const CheckoutForm = ({ order }) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ price }),
+      body: JSON.stringify({}),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, [price]);
+      .then((data) => setClientSecret(clientSecret));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,8 +55,8 @@ const CheckoutForm = ({ order }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: property,
             email: user.email,
+            property: property,
           },
         },
       });
@@ -77,6 +76,7 @@ const CheckoutForm = ({ order }) => {
         last4: paymentMethod.card.last4,
         transaction: paymentIntent.client_secret.slice("_secret")[0],
       };
+      console.log(payment);
       const url = `http://localhost:5000/orders/${_id}`;
       fetch(url, {
         method: "PUT",
@@ -90,43 +90,39 @@ const CheckoutForm = ({ order }) => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              "::placeholder": {
-                color: "#aab7c4",
+    <div>
+      <form onSubmit={handleSubmit}>
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: "16px",
+                color: "#424770",
+                "::placeholder": {
+                  color: "#aab7c4",
+                },
+              },
+              invalid: {
+                color: "#9e2146",
               },
             },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />
-      <button
-        className="btn btn-sm btn-primary mt-4"
-        type="submit"
-        disabled={!stripe || !clientSecret || transactionId}
-      >
-        Pay
-      </button>
-      {cardErr && <p className="text-primary">{cardErr}</p>}
-      {transactionId && (
-        <div>
-          <p className="text-success mt-2">
-            Congrats! Your payment is confirmed
-          </p>
-          <p className="text-success">
-            Transaction Id:{" "}
-            <span className="text-orange-600 font-bold">{transactionId}</span>
-          </p>
-        </div>
-      )}
-    </form>
+          }}
+        />
+        {processing ? (
+          <Loadingimg />
+        ) : (
+          <button
+            type="submit"
+            className="bg-red-500 px-3 py-2 mt-10"
+            disabled={!stripe || success}
+          >
+            Pay
+          </button>
+        )}
+      </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
+    </div>
   );
 };
 
