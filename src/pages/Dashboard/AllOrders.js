@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 const AllOrders = () => {
   const [orderId, setOrderId] = useState("");
   const [orders, setOrders] = useState([]);
-  const { handleSubmit, register } = useForm();
-
-  // status****
-  const handleOrderId = (id) => {
-    setOrderId(id);
-    console.log(id);
-  };
+  const [isUpdated, setIsUpdated] = useState("");
   useEffect(() => {
     fetch("http://localhost:5000/orders")
       .then((res) => res.json())
@@ -31,15 +24,28 @@ const AllOrders = () => {
         }
       });
   };
-  const onSubmit = (data) => {
-    fetch(`http://localhost:5000/${orderId}`, {
+  // // update
+  const handleUpdateStatus = (id) => {
+    fetch(`http://localhost:5000/orderStatus/update/${id}`, {
       method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
+      headers: {
+        "content-type": "application/json",
+      },
     })
+      // .then()
+
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          alert("Order Approved");
+          setIsUpdated(true);
+          window.location.reload();
+        } else {
+          setIsUpdated(false);
+        }
+      });
   };
+
   return (
     <div class="overflow-x-auto">
       {orders.length ? (
@@ -48,12 +54,11 @@ const AllOrders = () => {
             <tr>
               <th></th>
               <th className="text-lg">OrderId</th>
-              <th className="text-lg">Type</th>
               <th className="text-lg ">Property Name</th>
               <th className="text-lg ">Price</th>
-              <th className="text-lg ">Address</th>
               <th className="text-lg ">Action</th>
               <th className="text-lg ">Status</th>
+              <th className="text-lg ">Payment</th>
             </tr>
           </thead>
           {orders.map((order, index) => (
@@ -62,10 +67,8 @@ const AllOrders = () => {
                 <tr>
                   <th>{index + 1}</th>
                   <td>{order?._id}</td>
-                  <td>{order?.order?.type}</td>
-                  <td>{order?.order?.name}</td>
-                  <td>{order?.order?.price}</td>
-                  <td>{order?.order?.address}</td>
+                  <td>{order?.property}</td>
+                  <td>{order?.price}</td>
 
                   <td>
                     <button
@@ -76,28 +79,21 @@ const AllOrders = () => {
                     </button>
                   </td>
                   <td>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      <select
-                        onClick={() => handleOrderId(order._id)}
-                        {...register("status")}
-                      >
-                        <option value={order.status}>{order.status}</option>
-                        <option value="approved">Approved</option>
-                        <option value="ongoing">On Going</option>
-                        <option value="done">Done</option>
-                      </select>
-                      <button
-                        type="submit"
-                        variant="contained"
-                        style={{
-                          marginRight: "10px",
-                          backgroundColor: "salmon",
-                          marginLeft: "5px",
-                        }}
-                      >
-                        Confirm
-                      </button>
-                    </form>
+                    <button
+                      onClick={() => handleUpdateStatus(order?._id)}
+                      variant="outlined"
+                      className="inline-flex text-white bg-indigo-500 border-0 p-2  focus:outline-none hover:bg-indigo-600 rounded text-sm"
+                    >
+                      {order?.status === "Confirm" ? "Approved " : "Pending"}
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      variant="outlined"
+                      className="inline-flex text-black bg-green-500 border-0 p-2  focus:outline-none rounded text-sm"
+                    >
+                      {order?.payment ? "Paid" : "Unpaid"}
+                    </button>
                   </td>
                 </tr>
               </tbody>

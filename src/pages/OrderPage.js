@@ -29,7 +29,6 @@ const OrderPage = () => {
     };
     data = order;
     data.status = "pending";
-    data.status = "pending";
     fetch("http://localhost:5000/orders", {
       method: "POST",
       headers: {
@@ -197,7 +196,7 @@ const OrderPage = () => {
               <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Order Now
               </button>
-              <Link to="/dashboard">
+              <Link to="/dashboard/myorder">
                 <button className="text-white bg-indigo-500 border-0 py-2 px-6 mx-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                   Review Order
                 </button>

@@ -11,7 +11,21 @@ function AllUser() {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [user.email]);
-
+  const handledelete = (user) => {
+    const url = `http://localhost:5000/users/${user}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          alert("Are You Sure deleted This????");
+          const remaining = users.filter((user) => user._id !== user);
+          setUsers(remaining);
+          window.location.reload();
+        }
+      });
+  };
   return (
     <div>
       <div class="overflow-x-auto">
@@ -34,8 +48,11 @@ function AllUser() {
                     <td>{user?.email}</td>
 
                     <td>
-                      <button className="inline-flex text-white bg-red-500 border-0 p-2  focus:outline-none hover:bg-indigo-600 rounded text-sm">
-                        Cancel
+                      <button
+                        onClick={() => handledelete(user._id)}
+                        className="inline-flex text-white bg-red-500 border-0 p-2  focus:outline-none hover:bg-indigo-600 rounded text-sm"
+                      >
+                        Delete
                       </button>
                     </td>
                   </tr>

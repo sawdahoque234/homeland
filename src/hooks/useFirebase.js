@@ -16,26 +16,52 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
-  const auth = getAuth();
-  const googleProvider = new GoogleAuthProvider();
+  const [isLoading, setIsLoading] = useState(true);
 
+  const auth = getAuth();
+
+  // google singIn
+  const signInWithGoogle = (location, navigate) => {
+    setIsLoading(true);
+    const googleProvider = new GoogleAuthProvider();
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const user = result.user;
+        const destination = location?.state?.from || "/";
+        navigate(destination);
+        setAuthError("");
+
+        // save user info into database
+        userInfoSaveDB(user.email, user.displayName, "PUT");
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  // user register
   const registerUser = (email, password, name, navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        hanldeUserInfo(result.user.email, name);
+      .then((userCredential) => {
         setAuthError("");
 
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+
+        // save user info into database
+        userInfoSaveDB(email, name, "POST");
+
+        // update userName
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
-          .catch((error) => {
-            console.log(error);
-          });
-        navigate("/", { replace: true });
+          .catch((error) => {});
+
+        navigate("/");
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -43,14 +69,13 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
+  // login with email password
   const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        hanldeUserInfo(result.user.email);
-
+      .then((userCredential) => {
         const destination = location?.state?.from || "/";
-        navigate(destination, { replace: true });
+        navigate(destination);
         setAuthError("");
       })
       .catch((error) => {
@@ -59,31 +84,16 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const signInWithGoogle = (location, navigate) => {
-    setIsLoading(true);
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        hanldeUserInfo(result.user.email);
-        setAuthError("");
-        const destination = location?.state?.from || "/";
-        navigate(destination, { replace: true });
-      })
+  // logout
+  const logout = () => {
+    signOut(auth)
+      .then(() => {})
       .catch((error) => {
-        setAuthError(error.message);
-      })
-      .finally(() => setIsLoading(false));
-  };
-  const hanldeUserInfo = (email, displayName) => {
-    fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email, displayName }),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result));
+        console.log(error);
+      });
   };
 
-  // user state
+  // observe user
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -96,13 +106,16 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
-  //logout
-  const logout = () => {
-    setIsLoading(true);
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {})
-      .finally(() => setIsLoading(false));
+  // save user info into database
+  const userInfoSaveDB = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:5000/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
   };
 
   return {

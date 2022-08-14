@@ -11,27 +11,22 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { orderId } = useParams();
   const { user } = useAuth();
-  const [order] = useState({});
-  const [orders, setOrders] = useState([]);
+  const [order, setOrder] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${user.email}`)
+    fetch(`http://localhost:5000/order/${orderId}`)
       .then((res) => res.json())
-      .then((data) => setOrders(data));
+      .then((data) => setOrder(data));
   }, [orderId]);
 
   return (
     <div className="text-white">
-      <div class="card w-96 bg-base-100 shadow-lg">
-        {orders.map((order) => (
-          <div class="card-body pt-4">
-            <h2 class="card-title text-success">Hello, {order.name}</h2>
-            <p className="text-neutral font-bold">
-              Your order:{order.property}{" "}
-            </p>
-            <p className="text-neutral font-bold">Price:{order.price} </p>
-            <p className="text-neutral font-bold">Address:{order.address} </p>
-          </div>
-        ))}
+      <div class="card w-96 bg-base-100 shadow-lg text-left mt-10">
+        <div class="card-body pt-4">
+          <h2 class="card-title text-success">Hello, {order.name}</h2>
+          <p className="text-neutral font-bold">Your order:{order.property} </p>
+          <p className="text-neutral font-bold">Price:{order.price} </p>
+          <p className="text-neutral font-bold">Address:{order.address} </p>
+        </div>
       </div>
 
       <div class="card w-96 bg-base-100 shadow-lg mt-6">

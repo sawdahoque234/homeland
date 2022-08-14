@@ -34,7 +34,6 @@ const Myorder = () => {
           <thead>
             <tr>
               <th></th>
-              <th className="text-lg">Type</th>
               <th className="text-lg ">Property Name</th>
               <th className="text-lg ">Price</th>
               <th className="text-lg ">Address</th>
@@ -48,13 +47,12 @@ const Myorder = () => {
               <tbody>
                 <tr>
                   <th>{index + 1}</th>
-                  <td>{order?.type}</td>
                   <td>{order?.property}</td>
                   <td>{order?.price}</td>
                   <td>{order?.address}</td>
                   <td>
                     {order.payment ? (
-                      "paid"
+                      "Paid"
                     ) : (
                       <Link to={`/dashboard/payment/${order._id}`}>
                         <button className="btn btn-success btn-xs">

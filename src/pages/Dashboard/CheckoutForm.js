@@ -4,7 +4,7 @@ import useAuth from "./../../hooks/useAuth";
 import Loadingimg from "../Loadingimg";
 
 const CheckoutForm = ({ order }) => {
-  const { property, price, _id } = order;
+  const { property, price, _id, name } = order;
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -20,11 +20,11 @@ const CheckoutForm = ({ order }) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({ price }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(clientSecret));
-  }, []);
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -55,8 +55,8 @@ const CheckoutForm = ({ order }) => {
         payment_method: {
           card: card,
           billing_details: {
+            name: name,
             email: user.email,
-            property: property,
           },
         },
       });
@@ -74,10 +74,10 @@ const CheckoutForm = ({ order }) => {
         amount: paymentIntent.amount,
         created: paymentIntent.created,
         last4: paymentMethod.card.last4,
-        transaction: paymentIntent.client_secret.slice("_secret")[0],
+        transactionId: paymentIntent.id,
       };
       console.log(payment);
-      const url = `http://localhost:5000/orders/${_id}`;
+      const url = `http://localhost:5000/order/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {
