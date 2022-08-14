@@ -82,7 +82,7 @@ const AllOrders = () => {
                     <button
                       onClick={() => handleUpdateStatus(order?._id)}
                       variant="outlined"
-                      className="inline-flex text-white bg-indigo-500 border-0 p-2  focus:outline-none hover:bg-indigo-600 rounded text-sm"
+                      className="inline-flex text-white bg-blue-500 border-0 p-2  focus:outline-none rounded text-lg"
                     >
                       {order?.status === "Confirm" ? "Approved " : "Pending"}
                     </button>

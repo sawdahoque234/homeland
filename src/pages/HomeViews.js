@@ -9,7 +9,7 @@ const HomeViews = () => {
         <hr className="bg-gray-800  mx-20" />
         <div class=" px-5 py-10 mx-auto">
           <h1
-            className="py-8  mb-6  lg:text-[50px]  text-4xl font-bold font-mono text-center"
+            className="py-8  mb-6  lg:text-[50px]  text-3xl font-bold font-mono text-center"
             data-aos="fade-right"
             data-aos-duration="2000"
           >

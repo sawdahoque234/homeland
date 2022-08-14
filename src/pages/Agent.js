@@ -8,13 +8,13 @@ const Agent = () => {
     <div>
       <section>
         <div class=" mx-auto bg-gray-900 text-white py-12">
-          <h1 className="py-8 text-4xl  mb-6 lg:text-[50px] font-bold font-mono text-center">
+          <h1 className="py-8 text-3xl  mb-6 lg:text-[50px] font-bold font-mono text-center">
             Meet Our Agent
           </h1>
 
           <div class="flex flex-wrap -m-4 ">
             <div
-              class="lg:w-1/4 lg:mb-0 mb-6  shadow-lg border-gray-500 sm:mx-14 bg-gray-800 rounded border md:mx-auto "
+              class="lg:w-1/4 lg:mb-0 mb-6 w-2/3 mx-auto shadow-lg border-gray-500 sm:mx-14 bg-gray-800 rounded border md:mx-auto "
               data-aos-duration="2000"
               data-aos="fade-up-right"
             >
@@ -48,7 +48,7 @@ const Agent = () => {
               </div>
             </div>
             <div
-              class="lg:w-1/4 lg:mb-0 mb-6  shadow-lg border-gray-500 sm:mx-14 bg-gray-800  rounded border md:mx-auto "
+              class="lg:w-1/4 lg:mb-0 mb-6 w-2/3 mx-auto shadow-lg border-gray-500 sm:mx-14 bg-gray-800  rounded border md:mx-auto "
               data-aos-duration="2000"
               data-aos="fade-up-right"
             >
@@ -83,7 +83,7 @@ const Agent = () => {
             </div>
 
             <div
-              class="lg:w-1/4 lg:mb-0 p-3  sm:mx-14 shadow-lg md:mx-auto border-gray-500 bg-gray-800 rounded border"
+              class="lg:w-1/4 lg:mb-0 p-3 w-2/3 mx-auto sm:mx-14 shadow-lg md:mx-auto border-gray-500 bg-gray-800 rounded border"
               data-aos-duration="2000"
               data-aos="fade-up-left"
             >

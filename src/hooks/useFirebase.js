@@ -20,7 +20,6 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const auth = getAuth();
-
   // google singIn
   const signInWithGoogle = (location, navigate) => {
     setIsLoading(true);
@@ -31,7 +30,6 @@ const useFirebase = () => {
         const destination = location?.state?.from || "/";
         navigate(destination);
         setAuthError("");
-
         // save user info into database
         userInfoSaveDB(user.email, user.displayName, "PUT");
       })
@@ -40,27 +38,22 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
-
   // user register
   const registerUser = (email, password, name, navigate) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setAuthError("");
-
         const newUser = { email, displayName: name };
         setUser(newUser);
-
         // save user info into database
         userInfoSaveDB(email, name, "POST");
-
         // update userName
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
           .catch((error) => {});
-
         navigate("/");
       })
       .catch((error) => {

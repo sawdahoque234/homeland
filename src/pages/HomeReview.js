@@ -11,7 +11,7 @@ const HomeReview = () => {
         <hr className="mx-24" />
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center w-full mb-20">
-            <h1 className="py-4 text-4xl  mb-6 lg:text-[50px] font-bold font-mono text-center">
+            <h1 className="py-4 text-3xl  mb-6 lg:text-[50px] font-bold font-mono text-center">
               Customers Review
             </h1>
             <p className="text-gray-500 mb-4">
