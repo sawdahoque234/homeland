@@ -4,13 +4,13 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [isUpdated, setIsUpdated] = useState("");
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
+    fetch("https://protected-lake-49727.herokuapp.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orderId]);
 
   const handledelete = (order) => {
-    const url = `http://localhost:5000/orders/${order}`;
+    const url = `https://protected-lake-49727.herokuapp.com/orders/${order}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -26,12 +26,15 @@ const AllOrders = () => {
   };
   // // update
   const handleUpdateStatus = (id) => {
-    fetch(`http://localhost:5000/orderStatus/update/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
+    fetch(
+      `https://protected-lake-49727.herokuapp.com/orderStatus/update/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
       // .then()
 
       .then((res) => res.json())

@@ -10,7 +10,7 @@ const OrderPage = () => {
   const { register, reset, handleSubmit } = useForm();
   const [property, setProperty] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/properties/${propertyId}`)
+    fetch(`https://protected-lake-49727.herokuapp.com/properties/${propertyId}`)
       .then((res) => res.json())
       .then((data) => setProperty(data));
   }, []);
@@ -29,7 +29,7 @@ const OrderPage = () => {
     };
     data = order;
     data.status = "pending";
-    fetch("http://localhost:5000/orders", {
+    fetch("https://protected-lake-49727.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

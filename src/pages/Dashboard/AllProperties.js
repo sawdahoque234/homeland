@@ -3,7 +3,7 @@ import useProperties from "../../hooks/useProperties";
 const AllProperties = () => {
   const [properties, setProperties] = useProperties();
   const handledelete = (property) => {
-    const url = `http://localhost:5000/properties/${property}`;
+    const url = `https://protected-lake-49727.herokuapp.com/properties/${property}`;
     fetch(url, {
       method: "DELETE",
     })

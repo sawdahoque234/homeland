@@ -15,7 +15,7 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://protected-lake-49727.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -77,7 +77,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
       console.log(payment);
-      const url = `http://localhost:5000/order/${_id}`;
+      const url = `https://protected-lake-49727.herokuapp.com/order/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {

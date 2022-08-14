@@ -7,12 +7,12 @@ function AllUser() {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://protected-lake-49727.herokuapp.com/users`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [user.email]);
   const handledelete = (user) => {
-    const url = `http://localhost:5000/users/${user}`;
+    const url = `https://protected-lake-49727.herokuapp.com/users/${user}`;
     fetch(url, {
       method: "DELETE",
     })

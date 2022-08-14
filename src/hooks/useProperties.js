@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useProperties = () => {
   const [properties, setProperties] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/properties")
+    fetch("https://protected-lake-49727.herokuapp.com/properties")
       .then((res) => res.json())
       .then((data) => setProperties(data));
   }, [properties]);
