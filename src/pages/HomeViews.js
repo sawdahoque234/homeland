@@ -44,16 +44,16 @@ const HomeViews = () => {
                       alt="blog"
                     />
                     <div class="p-6">
-                      <h2 class="tracking-widest  title-font  text-white mb-1">
+                      <h2 class="text-sm  text-gray-300 mb-1">
                         {type} | {country}
                       </h2>
-                      <h1 class="title-font text-4xl font-medium text-white mb-3">
+                      <h1 class="title-font text-2xl font-medium text-white mb-3">
                         {name}
                       </h1>
-                      <h1 class=" text-2xl font-medium text-white mb-3">
+                      <h1 class=" text-xl font-medium text-white mb-3">
                         Price: ${price}
                       </h1>
-                      <p class="leading-relaxed mb-3 text-left">
+                      <p class="leading-relaxed mb-3 text-gray-200 text-left">
                         {description?.slice(0, 150)}
                       </p>
                       <div class="flex items-center flex-wrap ">
@@ -65,7 +65,7 @@ const HomeViews = () => {
                             Buy Now
                           </button>
                         </Link>
-                        <span class="text-white   inline-flex pl-4 text-xl lg:ml-auto md:ml-0 ml-auto leading-none  py-1 ">
+                        <span class="text-white   inline-flex pl-4 text-sm lg:ml-auto md:ml-0 ml-auto leading-none  py-1 ">
                           {bedrooms}{" "}
                           <span className="mx-2">
                             {" "}
@@ -76,7 +76,7 @@ const HomeViews = () => {
                             {" "}
                             <BiBath />
                           </span>{" "}
-                          | {surface}
+                          | {surface} sq ft
                         </span>
                       </div>
                     </div>

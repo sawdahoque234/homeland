@@ -20,7 +20,6 @@ const Home = () => {
       <Agent />
       <Award />
       <Offer />
-      <Footer />
     </div>
   );
 };

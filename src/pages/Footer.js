@@ -4,12 +4,12 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-gray-900">
+      <footer className="bg-gray-900 ">
         <div class=" px-12 py-24 mx-auto">
           <div class="flex flex-wrap md:text-left lg:text-center -mb-10 -mx-4">
             <div class="lg:w-1/5 md:w-1/3 w-full px-3 mx-auto ">
               <nav
-                class="list-none mb-10 cursor-pointer text-xl"
+                class="list-none mb-10 cursor-pointer text-xl text-left"
                 data-aos-duration="2000"
                 data-aos="fade-right"
               >
@@ -26,7 +26,7 @@ const Footer = () => {
             </div>
 
             <div class="lg:w-1/5 md:w-1/3 w-full px-3 mx-auto">
-              <nav class="list-none mb-10 cursor-pointer text-xl">
+              <nav class="list-none mb-10 cursor-pointer text-xl text-left">
                 <li className="py-2">
                   <a class="text-white hover:text-red-500 ">Facebook</a>
                 </li>
@@ -41,8 +41,24 @@ const Footer = () => {
                 </li>
               </nav>
             </div>
-            <div class="lg:w-1/5 md:w-1/3 w-full px-3">
-              <nav class="list-none mb-10 cursor-pointer text-xl">
+            <div class="lg:w-1/5 md:w-1/3 w-full px-3 mx-auto">
+              <nav class="list-none mb-10 cursor-pointer text-xl text-left">
+                <li className="py-2">
+                  <a class="text-white hover:text-red-500 ">Partnership</a>
+                </li>
+                <li className="py-2">
+                  <a class="text-white hover:text-red-500 ">Our Agent</a>
+                </li>
+                <li className="py-2">
+                  <a class="text-white hover:text-red-500 ">Get Discount</a>
+                </li>
+                <li className="py-2">
+                  <a class="text-white hover:text-red-500 ">Our Service</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/5 md:w-1/3 w-full px-3 mx-auto">
+              <nav class="list-none mb-10 cursor-pointer text-xl text-left">
                 <li className="py-2">
                   <a class="text-white hover:text-red-500 ">Partnership</a>
                 </li>
@@ -58,8 +74,8 @@ const Footer = () => {
               </nav>
             </div>
 
-            <div class="lg:w-1/5 md:w-1/3 w-full px-3 mx-auto">
-              <nav class="list-none mb-10 cursor-pointer text-xl">
+            <div class="lg:w-1/5 md:w-1/3 w-full px-3 ">
+              <nav class="list-none mb-10 cursor-pointer text-xl text-left">
                 <li className="py-2">
                   <a class="text-white hover:text-red-500 ">Privecy</a>
                 </li>
@@ -150,7 +166,6 @@ const Footer = () => {
             </span>
           </div>
         </div>
-        <div class=""></div>
       </footer>
     </div>
   );

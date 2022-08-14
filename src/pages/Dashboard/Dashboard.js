@@ -5,11 +5,10 @@ import {
   AiOutlinePlusCircle,
   AiOutlineComment,
 } from "react-icons/ai";
-import useAdmin from "./../../hooks/useAdmin";
+import useAuth from "./../../hooks/useAuth";
 
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
-
+  const { admin } = useAuth();
   const { pathname } = useLocation();
   return (
     <div>
@@ -21,7 +20,6 @@ const Dashboard = () => {
           </div>
         </div>
         <div class="drawer-side ">
-          <label for="dashboard-drawer" class="drawer-overlay "></label>
           <ul class="menu p-10 overflow-y-auto w-80 bg-gray-900 text-white ">
             <li
               className={`${
@@ -34,32 +32,7 @@ const Dashboard = () => {
               </Link>
             </li>
 
-            {!isAdmin && (
-              <>
-                <li
-                  className={`${
-                    pathname === "/dashboard/myorder" &&
-                    "border-b-2 border-white "
-                  }`}
-                >
-                  <Link to="myorder" className="my-4 text-2xl font-medium">
-                    <AiOutlinePlusCircle /> My order
-                  </Link>
-                </li>
-                <li
-                  className={`${
-                    pathname === "/dashboard/review" &&
-                    "border-b-2 border-white"
-                  }`}
-                >
-                  <Link to="review" className="my-2 text-2xl font-medium">
-                    <AiOutlineComment />
-                    Add Review
-                  </Link>
-                </li>
-              </>
-            )}
-            {isAdmin && (
+            {admin ? (
               <>
                 <li
                   className={`${
@@ -115,6 +88,30 @@ const Dashboard = () => {
                 >
                   <Link to="makeadmin" className="my-2 text-2xl font-medium">
                     Make Admin
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li
+                  className={`${
+                    pathname === "/dashboard/myorder" &&
+                    "border-b-2 border-white "
+                  }`}
+                >
+                  <Link to="myorder" className="my-4 text-2xl font-medium">
+                    <AiOutlinePlusCircle /> My order
+                  </Link>
+                </li>
+                <li
+                  className={`${
+                    pathname === "/dashboard/review" &&
+                    "border-b-2 border-white"
+                  }`}
+                >
+                  <Link to="review" className="my-2 text-2xl font-medium">
+                    <AiOutlineComment />
+                    Add Review
                   </Link>
                 </li>
               </>

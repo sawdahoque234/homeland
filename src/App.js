@@ -23,6 +23,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Payment from "./pages/Dashboard/Payment";
+import Footer from "./pages/Footer";
 
 function App() {
   useEffect(() => {
@@ -42,7 +43,13 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/allreviews" element={<AllReviews />} />
             <Route path="/properties" element={<Properties />} />
-
+            <Route element={<PrivateRoute />}>
+              {" "}
+              <Route
+                path="/orderpage/:propertyId"
+                element={<OrderPage />}
+              />{" "}
+            </Route>
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<MyProfile />} />
               <Route path="review" element={<Review />} />
@@ -52,17 +59,11 @@ function App() {
               <Route path="allusers" element={<AllUser />} />
               <Route path="allorders" element={<AllOrders />} />
               <Route path="makeadmin" element={<MakeAdmin />} />
+
               <Route path="payment/:orderId" element={<Payment />} />
             </Route>
-
-            <Route element={<PrivateRoute />}>
-              {" "}
-              <Route
-                path="/orderpage/:propertyId"
-                element={<OrderPage />}
-              />{" "}
-            </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>

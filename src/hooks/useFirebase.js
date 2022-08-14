@@ -16,9 +16,9 @@ initializeAuthentication();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [authError, setAuthError] = useState("");
+  const [admin, setAdmin] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [authError, setAuthError] = useState("");
   const auth = getAuth();
 
   // google singIn
@@ -83,17 +83,6 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
-
-  // logout
-  const logout = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  // observe user
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -105,7 +94,25 @@ const useFirebase = () => {
     });
     return () => unsubscribed;
   }, [auth]);
+  // get admin
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data.admin);
+      });
+  }, [user?.email]);
+  // user state
 
+  //logout
+  const logout = () => {
+    signOut(auth)
+      .then(() => {})
+
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   // save user info into database
   const userInfoSaveDB = (email, displayName, method) => {
     const user = { email, displayName };
@@ -117,7 +124,6 @@ const useFirebase = () => {
       body: JSON.stringify(user),
     }).then();
   };
-
   return {
     user,
     isLoading,
@@ -126,6 +132,7 @@ const useFirebase = () => {
     loginUser,
     signInWithGoogle,
     logout,
+    admin,
   };
 };
 

@@ -17,7 +17,7 @@ const AllOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount) {
-          alert("Are You Sure deleted This????");
+          alert("Are You Sure Deleted This Product???");
           const remaining = orders.filter((order) => order._id !== order);
           setOrders(remaining);
           window.location.reload();
