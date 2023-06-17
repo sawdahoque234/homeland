@@ -7,13 +7,15 @@ const Myorder = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`https://protected-lake-49727.herokuapp.com/orders/${user.email}`)
+    fetch(
+      `https://homelandserver-production.up.railway.app/orders/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user.email]);
 
   const handledelete = (order) => {
-    const url = `https://protected-lake-49727.herokuapp.com/orders/${order}`;
+    const url = `https://homelandserver-production.up.railway.app/orders/${order}`;
     fetch(url, {
       method: "DELETE",
     })

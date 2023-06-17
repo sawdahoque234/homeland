@@ -15,13 +15,16 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("https://protected-lake-49727.herokuapp.com/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://homelandserver-production.up.railway.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -77,7 +80,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
       console.log(payment);
-      const url = `https://protected-lake-49727.herokuapp.com/order/${_id}`;
+      const url = `https://homelandserver-production.up.railway.app/order/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {

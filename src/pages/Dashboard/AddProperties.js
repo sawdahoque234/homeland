@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 const AddProperties = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch("https://protected-lake-49727.herokuapp.com/properties", {
+    fetch("https://homelandserver-production.up.railway.app/properties", {
       method: "POST",
       headers: {
         "content-type": "application/json",

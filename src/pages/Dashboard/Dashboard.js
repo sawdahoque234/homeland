@@ -19,8 +19,8 @@ const Dashboard = () => {
             <Outlet />
           </div>
         </div>
-        <div class="drawer-side ">
-          <ul class="menu p-10 overflow-y-auto w-80 bg-gray-900 text-white ">
+        <div class="dashboard-drawer ">
+          <ul class="menu p-10 overflow-y-auto w-80 bg-gray-900 h-full text-white ">
             <li
               className={`${
                 pathname === "/dashboard" && "border-b-2 border-white "

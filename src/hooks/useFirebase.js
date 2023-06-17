@@ -89,7 +89,9 @@ const useFirebase = () => {
   }, [auth]);
   // get admin
   useEffect(() => {
-    fetch(`https://protected-lake-49727.herokuapp.com/users/${user.email}`)
+    fetch(
+      `https://homelandserver-production.up.railway.app/users/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);
@@ -109,7 +111,7 @@ const useFirebase = () => {
   // save user info into database
   const userInfoSaveDB = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://protected-lake-49727.herokuapp.com/users", {
+    fetch("https://homelandserver-production.up.railway.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",

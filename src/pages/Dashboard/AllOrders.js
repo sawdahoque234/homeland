@@ -4,13 +4,13 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [isUpdated, setIsUpdated] = useState("");
   useEffect(() => {
-    fetch("https://protected-lake-49727.herokuapp.com/orders")
+    fetch("https://homelandserver-production.up.railway.app/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orderId]);
 
   const handledelete = (order) => {
-    const url = `https://protected-lake-49727.herokuapp.com/orders/${order}`;
+    const url = `https://homelandserver-production.up.railway.app/orders/${order}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -27,7 +27,7 @@ const AllOrders = () => {
   // // update
   const handleUpdateStatus = (id) => {
     fetch(
-      `https://protected-lake-49727.herokuapp.com/orderStatus/update/${id}`,
+      `https://homelandserver-production.up.railway.app/orderStatus/update/${id}`,
       {
         method: "PUT",
         headers: {

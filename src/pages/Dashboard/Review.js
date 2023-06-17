@@ -8,7 +8,7 @@ const Review = () => {
   const { user } = useAuth();
 
   const onSubmit = (data) => {
-    fetch("https://protected-lake-49727.herokuapp.com/reviews", {
+    fetch("https://homelandserver-production.up.railway.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

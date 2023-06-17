@@ -10,7 +10,9 @@ const OrderPage = () => {
   const { register, reset, handleSubmit } = useForm();
   const [property, setProperty] = useState([]);
   useEffect(() => {
-    fetch(`https://protected-lake-49727.herokuapp.com/properties/${propertyId}`)
+    fetch(
+      `https://homelandserver-production.up.railway.app/properties/${propertyId}`
+    )
       .then((res) => res.json())
       .then((data) => setProperty(data));
   }, []);
@@ -29,7 +31,7 @@ const OrderPage = () => {
     };
     data = order;
     data.status = "pending";
-    fetch("https://protected-lake-49727.herokuapp.com/orders", {
+    fetch("https://homelandserver-production.up.railway.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

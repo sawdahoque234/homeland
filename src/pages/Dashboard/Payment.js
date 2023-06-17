@@ -13,7 +13,7 @@ const Payment = () => {
   const { user } = useAuth();
   const [order, setOrder] = useState({});
   useEffect(() => {
-    fetch(`https://protected-lake-49727.herokuapp.com/order/${orderId}`)
+    fetch(`https://homelandserver-production.up.railway.app/order/${orderId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [orderId]);
