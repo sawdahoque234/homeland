@@ -90,7 +90,7 @@ const useFirebase = () => {
   // get admin
   useEffect(() => {
     fetch(
-      `https://homelandserver-production.up.railway.app/users/${user.email}`
+      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/users/${user.email}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -111,7 +111,7 @@ const useFirebase = () => {
   // save user info into database
   const userInfoSaveDB = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://homelandserver-production.up.railway.app/users", {
+    fetch("https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",

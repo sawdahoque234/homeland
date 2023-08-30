@@ -3,7 +3,7 @@ import useProperties from "../../hooks/useProperties";
 const AllProperties = () => {
   const [properties, setProperties] = useProperties();
   const handledelete = (property) => {
-    const url = `https://homelandserver-production.up.railway.app/properties/${property}`;
+    const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/properties/${property}`;
     fetch(url, {
       method: "DELETE",
     })

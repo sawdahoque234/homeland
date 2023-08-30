@@ -8,14 +8,14 @@ const Myorder = () => {
 
   useEffect(() => {
     fetch(
-      `https://homelandserver-production.up.railway.app/orders/${user.email}`
+      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders/${user.email}`
     )
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user.email]);
 
   const handledelete = (order) => {
-    const url = `https://homelandserver-production.up.railway.app/orders/${order}`;
+    const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders/${order}`;
     fetch(url, {
       method: "DELETE",
     })

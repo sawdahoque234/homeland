@@ -11,7 +11,7 @@ const OrderPage = () => {
   const [property, setProperty] = useState([]);
   useEffect(() => {
     fetch(
-      `https://homelandserver-production.up.railway.app/properties/${propertyId}`
+      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/properties/${propertyId}`
     )
       .then((res) => res.json())
       .then((data) => setProperty(data));
@@ -31,7 +31,7 @@ const OrderPage = () => {
     };
     data = order;
     data.status = "pending";
-    fetch("https://homelandserver-production.up.railway.app/orders", {
+    fetch("https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

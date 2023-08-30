@@ -13,7 +13,9 @@ const Payment = () => {
   const { user } = useAuth();
   const [order, setOrder] = useState({});
   useEffect(() => {
-    fetch(`https://homelandserver-production.up.railway.app/order/${orderId}`)
+    fetch(
+      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/order/${orderId}`
+    )
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [orderId]);

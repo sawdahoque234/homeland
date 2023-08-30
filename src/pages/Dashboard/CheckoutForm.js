@@ -16,7 +16,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     fetch(
-      "https://homelandserver-production.up.railway.app/create-payment-intent",
+      "https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -80,7 +80,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
       console.log(payment);
-      const url = `https://homelandserver-production.up.railway.app/order/${_id}`;
+      const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/order/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {

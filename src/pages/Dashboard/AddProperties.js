@@ -4,13 +4,16 @@ import { useForm } from "react-hook-form";
 const AddProperties = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    fetch("https://homelandserver-production.up.railway.app/properties", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      "https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/properties",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
