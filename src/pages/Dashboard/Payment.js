@@ -13,9 +13,7 @@ const Payment = () => {
   const { user } = useAuth();
   const [order, setOrder] = useState({});
   useEffect(() => {
-    fetch(
-      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/order/${orderId}`
-    )
+    fetch(`https://homelandserver.onrender.com/order/${orderId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [orderId]);

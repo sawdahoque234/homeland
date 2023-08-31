@@ -5,14 +5,11 @@ const MakeAdmin = () => {
   const { register, handleSubmit } = useForm();
   const [success, setSuccess] = useState(false);
   const adminSubmit = (data) => {
-    fetch(
-      "https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/users/admin",
-      {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch("https://homelandserver.onrender.com/users/admin", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((result) => {
         console.log(result);

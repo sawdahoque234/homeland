@@ -7,12 +7,12 @@ function AllUser() {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/users`)
+    fetch(`https://homelandserver.onrender.com/users`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [user.email]);
   const handledelete = (user) => {
-    const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/users/${user}`;
+    const url = `https://homelandserver.onrender.com/users/${user}`;
     fetch(url, {
       method: "DELETE",
     })

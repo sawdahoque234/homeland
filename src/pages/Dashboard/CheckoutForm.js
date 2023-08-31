@@ -15,16 +15,13 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch(
-      "https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch("https://homelandserver.onrender.com/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -80,7 +77,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
       console.log(payment);
-      const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/order/${_id}`;
+      const url = `https://homelandserver.onrender.com/order/${_id}`;
       fetch(url, {
         method: "PUT",
         headers: {

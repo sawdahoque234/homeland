@@ -4,7 +4,7 @@ const useReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/reviews")
+    fetch("https://homelandserver.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [reviews]);

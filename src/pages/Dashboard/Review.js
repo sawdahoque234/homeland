@@ -8,7 +8,7 @@ const Review = () => {
   const { user } = useAuth();
 
   const onSubmit = (data) => {
-    fetch("https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/reviews", {
+    fetch("https://homelandserver.onrender.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

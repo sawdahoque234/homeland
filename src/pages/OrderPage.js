@@ -10,9 +10,7 @@ const OrderPage = () => {
   const { register, reset, handleSubmit } = useForm();
   const [property, setProperty] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/properties/${propertyId}`
-    )
+    fetch(`https://homelandserver.onrender.com/properties/${propertyId}`)
       .then((res) => res.json())
       .then((data) => setProperty(data));
   }, []);
@@ -31,7 +29,7 @@ const OrderPage = () => {
     };
     data = order;
     data.status = "pending";
-    fetch("https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders", {
+    fetch("https://homelandserver.onrender.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

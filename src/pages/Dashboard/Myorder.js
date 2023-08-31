@@ -7,15 +7,13 @@ const Myorder = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(
-      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders/${user.email}`
-    )
+    fetch(`https://homelandserver.onrender.com/orders/${user.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user.email]);
 
   const handledelete = (order) => {
-    const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders/${order}`;
+    const url = `https://homelandserver.onrender.com/orders/${order}`;
     fetch(url, {
       method: "DELETE",
     })

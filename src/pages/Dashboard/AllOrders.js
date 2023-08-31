@@ -4,13 +4,13 @@ const AllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [isUpdated, setIsUpdated] = useState("");
   useEffect(() => {
-    fetch("https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders")
+    fetch("https://homelandserver.onrender.com/orders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [orderId]);
 
   const handledelete = (order) => {
-    const url = `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orders/${order}`;
+    const url = `https://homelandserver.onrender.com/orders/${order}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -26,15 +26,12 @@ const AllOrders = () => {
   };
   // // update
   const handleUpdateStatus = (id) => {
-    fetch(
-      `https://homelandserver-isqzp4rxt-sawdahoque234.vercel.app/orderStatus/update/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-    )
+    fetch(`https://homelandserver.onrender.com/orderStatus/update/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
       // .then()
 
       .then((res) => res.json())
